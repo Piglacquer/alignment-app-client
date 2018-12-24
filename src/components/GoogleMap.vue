@@ -29,8 +29,6 @@ export default {
   name: 'GoogleMap',
   data () {
     return {
-      // default to Montreal to keep it simple
-      // change this to whatever makes sense
       center: { lat: 45.508, lng: -73.587 },
       markers: [],
       places: [],
@@ -41,7 +39,6 @@ export default {
     this.geolocate()
   },
   methods: {
-    // receives a place object via the autocomplete component
     setPlace (place) {
       this.currentPlace = place
     },
