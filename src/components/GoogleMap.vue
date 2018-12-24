@@ -16,7 +16,7 @@
       <gmap-marker
         :key='index'
         v-for='(m, index) in markers'
-        :position='m.position'
+        :position='m'
       ></gmap-marker>
     </gmap-map>
   </div>
