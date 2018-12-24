@@ -1,6 +1,6 @@
 <template>
-  <div id='map'>
-
+  <div>
+    <div id='map' />
   </div>
 </template>
 
@@ -10,32 +10,38 @@ import L from 'leaflet'
 export default {
   data () {
     return {
-      url: 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
-      zoom: 3,
-      center: [47.413220, -1.219482],
-      bounds: 3
+
     }
   },
   components: {
   },
+  props: ['markers'],
   methods: {
     initMap () {
-      var map = L.map('map').setView([36, 116], 4)
-      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+      return L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map)
+      }).addTo(this.map)
+    },
+    addMarkers (markers) {
+      return markers.map(marker => {
+        L.marker(marker).addTo(this.map)
+      })
     }
   },
   mounted () {
+    console.log(this.props)
+    this.map = L.map('map').setView([36, 116], 4)
     this.initMap()
+    // this.addMarkers(this.props.markers)
+  },
+  updated () {
+    console.log(this.props)
   }
 }
 </script>
 
 <style>
   #map {
-    display: flex;
-    flex-flow: column nowrap;
     height: 500px;
     width: 700px;
   }

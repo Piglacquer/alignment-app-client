@@ -3,6 +3,16 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import L from 'leaflet'
+import * as VueGoogleMaps from 'vue2-google-maps'
+// require('dotenv').config()
+
+console.log(process.env.VUE_APP_GOOGLE_MAPS_KEY)
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: process.env.VUE_APP_GOOGLE_MAPS_KEY,
+    libraries: 'places' // necessary for places input
+  }
+})
 
 delete L.Icon.Default.prototype._getIconUrl
 

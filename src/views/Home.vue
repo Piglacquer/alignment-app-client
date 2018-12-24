@@ -1,16 +1,24 @@
 <template>
   <div class="home">
-    <Map1 />
+    <GoogleMap :markers='markers' />
   </div>
 </template>
 
 <script>
-import Map1 from '@/components/Map.vue'
+import GoogleMap from '@/components/GoogleMap.vue'
 
 export default {
   name: 'home',
+  data () {
+    return {
+      markers: [[12.41, -12.22], [15.15, 15.23]]
+    }
+  },
   components: {
-    Map1
+    GoogleMap
+  },
+  mounted () {
+    console.log(this.markers, 'home')
   }
 }
 </script>
