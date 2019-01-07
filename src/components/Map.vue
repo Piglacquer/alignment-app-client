@@ -8,13 +8,6 @@
 import L from 'leaflet'
 
 export default {
-  data () {
-    return {
-
-    }
-  },
-  components: {
-  },
   props: ['markers'],
   methods: {
     initMap () {
@@ -24,7 +17,7 @@ export default {
     },
     addMarkers (markers) {
       return markers.map(marker => {
-        L.marker(marker).addTo(this.map)
+        return L.marker(marker).addTo(this.map)
       })
     }
   },
