@@ -1,6 +1,6 @@
 <template>
   <div>
-    <GoogleMap :markers='markers'/>
+    <GoogleMap />
   </div>
 </template>
 

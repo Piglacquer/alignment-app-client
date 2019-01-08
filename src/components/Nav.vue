@@ -1,23 +1,25 @@
 <template>
   <div id='nav'>
-    <NavLink v-for='(nav, i) in navs' :nav='nav' :key='nav.id + i'/>
+    <NavLink v-for='(city, i) in cities' :city='city' :key='city.id + i'/>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
 import NavLink from '@/components/NavLink.vue'
 
 export default {
-  data () {
-    return {
-      navs: [{
-        id: 1,
-        city: 'Denver'
-      }]
-    }
-  },
+  computed: mapState({
+    cities: state => state.cities.availableCities
+  }),
+  // eslint-disable-next-line
+  methods: mapActions ('cities', ['fetchAvailableCities']),
   components: {
     NavLink
+  },
+  mounted () {
+    this.fetchAvailableCities()
+    console.log(this.cities)
   }
 }
 </script>

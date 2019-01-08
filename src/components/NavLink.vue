@@ -1,10 +1,10 @@
 <template>
-  <router-link :to="{path: 'cities', query: {city: nav.city}}" class='nav-link'>{{nav.city}}</router-link>
+  <router-link :to="'/cities/'+ city.name" replace class='nav-link'>{{city.name}}</router-link>
 </template>
 
 <script>
 export default {
-  props: ['nav']
+  props: ['city']
 }
 </script>
 
