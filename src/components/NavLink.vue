@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="'/cities/'+ city.name" replace class='nav-link'>{{city.name}}</router-link>
+  <router-link :to="'/cities/'+ city.id" replace class='nav-link'>{{city.name}}</router-link>
 </template>
 
 <script>

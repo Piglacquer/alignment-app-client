@@ -9,14 +9,14 @@
       </label>
     </div>
     <gmap-map
-      :center='center'
+      :center='{lat: currentCity.city_lat, lng: currentCity.city_lng}'
       :zoom='12'
       style='width:100%;  height: 400px;'
     >
       <gmap-marker
         :key='index'
         v-for='(m, index) in markers'
-        :position='m'
+        :position='{lat: m.lat, lng: m.lng}'
       ></gmap-marker>
     </gmap-map>
   </div>
@@ -29,15 +29,15 @@ export default {
   name: 'GoogleMap',
   computed: mapState({
     center: state => state.map.center,
-    markers: state => state.map.markers,
     places: state => state.map.places,
     currentPlace: state => state.map.currentPlace
   }),
-  methods: mapActions ('map', [
+  methods: mapActions('map', [
     'geolocate',
     'setPlace',
     'addMarker'
   ]),
+  props: ['markers', 'currentCity'],
   created () {
     this.geolocate()
   }

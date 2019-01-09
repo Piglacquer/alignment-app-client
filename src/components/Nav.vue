@@ -12,14 +12,14 @@ export default {
   computed: mapState({
     cities: state => state.cities.availableCities
   }),
-  // eslint-disable-next-line
-  methods: mapActions ('cities', ['fetchAvailableCities']),
+  methods: mapActions('cities', [
+    'fetchAvailableCities'
+  ]),
   components: {
     NavLink
   },
   mounted () {
     this.fetchAvailableCities()
-    console.log(this.cities)
   }
 }
 </script>

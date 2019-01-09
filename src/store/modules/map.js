@@ -2,7 +2,8 @@ const state = {
   center: { lat: 45.508, lng: -73.587 },
   markers: [],
   places: [],
-  currentPlace: null
+  currentPlace: null,
+  currentCity: null
 }
 
 const getters = {
@@ -25,6 +26,15 @@ const actions = {
       }
       context.commit('addMarker', marker)
     }
+  },
+  setMarkersAndCity (context, id) {
+    fetch('http://localhost:3001/markers/' + id)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.city)
+        context.commit('setMarkers', data.markers)
+        context.commit('setCurrentCity', data.city)
+      })
   }
 }
 
@@ -43,6 +53,12 @@ const mutations = {
     state.places = [ ...state.places, state.currentPlace ]
     state.center = marker
     state.currentPlace = null
+  },
+  setMarkers (state, markers) {
+    state.markers = markers
+  },
+  setCurrentCity (state, city) {
+    state.currentCity = city
   }
 }
 
