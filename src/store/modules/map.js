@@ -24,7 +24,21 @@ const actions = {
         lat: state.currentPlace.geometry.location.lat(),
         lng: state.currentPlace.geometry.location.lng()
       }
-      context.commit('addMarker', marker)
+      const newPlace = {
+        lat: state.currentPlace.geometry.location.lat(),
+        lng: state.currentPlace.geometry.location.lng(),
+        address: state.currentPlace.formatted_address,
+        name: state.currentPlace.name,
+        city_id: state.currentCity.id
+      }
+      fetch('http://localhost:3001/markers/', {
+        method: 'POST',
+        headers: new Headers({
+          'content-type': 'application/json'
+        }),
+        body: JSON.stringify(newPlace)
+      })
+        .then(() => context.commit('addMarker', marker))
     }
   },
   setMarkersAndCity (context, id) {

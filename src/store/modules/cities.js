@@ -8,7 +8,7 @@ const getters = {
 
 const actions = {
   fetchAvailableCities (context) {
-    fetch('http://localhost:3001/cities')
+    fetch('http://localhost:3001/locations')
       .then(resp => resp.json())
       .then(cities => context.commit('mutateAvailableCities', cities))
   },

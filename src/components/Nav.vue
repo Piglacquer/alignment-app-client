@@ -24,11 +24,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #nav {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column nowrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 </style>

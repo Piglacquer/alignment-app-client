@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='map-container'>
     <div>
       <h2>Search and add a pin</h2>
       <label>
@@ -37,15 +37,15 @@ export default {
     'setPlace',
     'addMarker'
   ]),
-  props: ['markers', 'currentCity'],
-  created () {
-    this.geolocate()
-  }
+  props: ['markers', 'currentCity']
 }
 </script>
 
 <style>
-gmap-autocomplete {
-  width: 20vw;
+.map-container {
+  width: 80vw;
+}
+.autocomplete-input {
+  width: 1000px;
 }
 </style>
