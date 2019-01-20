@@ -1,4 +1,4 @@
-//NOT USED
+// NOT USED
 <template>
   <div>
     <div id='map' />
@@ -26,7 +26,6 @@ export default {
     console.log(this.props)
     this.map = L.map('map').setView([36, 116], 4)
     this.initMap()
-    // this.addMarkers(this.props.markers)
   },
   updated () {
     console.log(this.props)

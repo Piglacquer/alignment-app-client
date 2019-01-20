@@ -21,6 +21,11 @@ export default new Router({
       path: '/cities/*',
       name: 'city',
       component: () => import('./views/CityMap.vue')
+    },
+    {
+      path: '/addNewCity',
+      name: 'newCity',
+      component: () => import('./views/AddNewCity.vue')
     }
   ]
 })

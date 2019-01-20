@@ -3,13 +3,13 @@
     <div>
       <h2>Search and add a pin</h2>
       <label>
-        <gmap-autocomplete @place_changed="setPlace">
+        <gmap-autocomplete id='input' @place_changed="setPlace">
         </gmap-autocomplete>
         <button @click='addMarker'>Add</button>
       </label>
     </div>
     <gmap-map
-      :center='{lat: currentCity.city_lat, lng: currentCity.city_lng}'
+      :center='center'
       :zoom='12'
       style='width:100%;  height: 400px;'
     >
@@ -37,7 +37,10 @@ export default {
     'setPlace',
     'addMarker'
   ]),
-  props: ['markers', 'currentCity']
+  props: {
+    markers: Array,
+    currentCity: Object
+  }
 }
 </script>
 
@@ -45,7 +48,8 @@ export default {
 .map-container {
   width: 80vw;
 }
-.autocomplete-input {
-  width: 1000px;
+
+#input {
+  width: 60vw;
 }
 </style>

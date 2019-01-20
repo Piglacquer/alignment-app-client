@@ -1,5 +1,5 @@
 const state = {
-  center: { lat: 45.508, lng: -73.587 },
+  center: {},
   markers: [],
   places: [],
   currentPlace: null,
@@ -31,7 +31,7 @@ const actions = {
         name: state.currentPlace.name,
         city_id: state.currentCity.id
       }
-      fetch('http://localhost:3001/markers/', {
+      fetch('https://alignment-db.herokuapp.com/markers/', {
         method: 'POST',
         headers: new Headers({
           'content-type': 'application/json'
@@ -42,10 +42,9 @@ const actions = {
     }
   },
   setMarkersAndCity (context, id) {
-    fetch('http://localhost:3001/markers/' + id)
+    fetch('https://alignment-db.herokuapp.com/markers/' + id)
       .then(response => response.json())
       .then(data => {
-        console.log(data.city)
         context.commit('setMarkers', data.markers)
         context.commit('setCurrentCity', data.city)
       })
@@ -73,6 +72,7 @@ const mutations = {
   },
   setCurrentCity (state, city) {
     state.currentCity = city
+    state.center = { lat: city.city_lat, lng: city.city_lng }
   }
 }
 

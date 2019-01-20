@@ -4,15 +4,17 @@
 
 <script>
 export default {
-  props: ['city']
+  props: {
+    city: Object
+  }
 }
 </script>
 
 <style scoped>
 .nav-link {
-  font-size: 2rem;
+  font-size: 1em;
   color: black;
-  height: 20vh;
-  width: 20vw;
+  max-width: 200px;
+  height: 50px;
 }
 </style>
